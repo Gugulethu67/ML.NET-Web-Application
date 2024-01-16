@@ -1,0 +1,90 @@
+﻿@page
+@model Team21V4._5.Pages.Products.IndexModel
+
+@{
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Products";
+    ViewData["PageActionText"] = "+ New Product";
+    ViewData["PageActionUrl"] = "/Products/Create";
+    
+}
+@using Microsoft.AspNetCore.Authorization;
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+
+<div class="col-md-7" style="padding:15px">
+    <a asp-page="./Create" class="btn btn-primary">
+        <i class="fa-solid fa-plus-circle"></i>
+    </a>
+</div>
+
+<form method="post" enctype="multipart/form-data">
+    <div class="form-group" style="padding:15px">
+        <label for="file">Upload File:</label>
+        <input type="file" name="file" id="file" class="form-control-file" style="width: 800px; background-color:rgb(180, 180, 180)">
+        <button type="submit" class="btn btn-primary">Upload</button>
+    </div>
+    
+</form>
+
+
+<center>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <ejs-grid id="grid" dataSource="@Model.Product" gridLines=None allowPaging="true" allowSorting="true" allowFiltering="true" allowReordering="true" allowSelection="true" toolbar="@(new List<string>() {"Print","Search","Cancel"})" query="new ej.data.Query().expand('Product')" >
+                <e-grid-pagesettings pagesize = "5"></e-grid-pagesettings>
+                <e-grid-selectionsettings checkboxMode="ResetOnRowClick" type="Multiple"></e-grid-selectionsettings>
+                <e-grid-editSettings allowAdding="true" allowDeleting="true" allowEditing="true"></e-grid-editSettings>
+                @*<e-grid-pagesettings pageCount="2"></e-grid-pagesettings>*@
+                 <e-grid-editSettings allowAdding="true" allowDeleting="true" allowEditing="true"></e-grid-editSettings>
+                <e-grid-columns>
+                    <e-grid-column type="checkbox" width="40"></e-grid-column>
+                    <e-grid-column field="ProductID" headerText="ProductID" isPrimaryKey="true" textAlign="Left" width="120"></e-grid-column>
+                    <e-grid-column field="ProductName"headerText="Product"  width="150"></e-grid-column>
+                    <e-grid-column field="DateAdded" headerText="Date Added" width="150"></e-grid-column>
+                    <e-grid-column field="StockOnHand" headerText="StockOnHand" width="120" ></e-grid-column>
+                   @*<e-grid-column field="DeliveredQuantity" headerText="Delivered" width="120"></e-grid-column>*@
+                        
+                   @* <e-grid-column field="WasteQuantity" headerText="Waste" width="120"></e-grid-column>*@
+                   @*<e-grid-column field="BoughtStock" headerText="Bought" width="120" ></e-grid-column>*@
+                   <e-grid-column field="Department" headerText="Department" width="120"></e-grid-column>
+                   @*<e-grid-column field="Temperature"  headerText="Temperature" width="120"></e-grid-column>*@
+                   @*<e-grid-column field="Precipitation" headerText="Precipitation" width="120"></e-grid-column>*@
+                    <e-grid-column template="#actioncolumn" headerText="Action" width="120"></e-grid-column>
+                </e-grid-columns>
+            </ejs-grid>
+        </div>
+    </div>
+</div>
+
+
+    <script id="actioncolumn" type="text/x-template">
+        <div>
+            <a class="btn btn-danger" href="/Products/Delete?id=${ProductID}">
+                <i class="fa-solid fa-trash"></i>
+            </a>
+            <a class="btn btn-primary" href="/Products/Edit?id=${ProductID}">
+                <i class="fa-solid fa-pen"></i>
+            </a>
+        </div>
+    </script>
+
+
+</center>
+
+<script>
+    function rowSelected(args) {
+        var grid = document.getElementById("Grid").ej2_instances[0];
+        var contextMenuObj = grid.contextMenuModule.contextMenu;
+        if (args.data.OrderID % 2 === 0) {
+            contextMenuObj.enableItems(['Copy'], false);
+        } else {
+            contextMenuObj.enableItems(['Copy'], true);
+        }
+    }
+</script>
+
+

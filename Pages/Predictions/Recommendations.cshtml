@@ -1,0 +1,92 @@
+﻿@page
+@model Team21V4._5.Pages.Predictions.RecommendationsModel
+@{
+}
+
+@{
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Predictions";
+
+}
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+
+<div style="text-align: right;">
+    <a asp-page="./AllPredictions" method="get" enctype="multipart/form-data" class="btn btn-primary">Predict All Products</a>
+</div>
+<br />
+<center>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <ejs-grid id="Grid" dataSource="@Model.Product" gridLines=None allowPaging="true" allowSorting="true" allowFiltering="true" allowReordering="true" allowSelection="true" toolbar="@(new List<string>() {"Print","Search","Cancel"})" query="new ej.data.Query().expand('Product')">
+                <e-grid-pagesettings pagesize="6"></e-grid-pagesettings>
+                <e-grid-selectionsettings checkboxMode="ResetOnRowClick" type="Multiple"></e-grid-selectionsettings>
+                <e-grid-editSettings allowAdding="true" allowDeleting="true" allowEditing="true"></e-grid-editSettings>
+                @*<e-grid-pagesettings pageCount="2"></e-grid-pagesettings>*@
+                <e-grid-editSettings allowAdding="true" allowDeleting="true" allowEditing="true"></e-grid-editSettings>
+                <e-grid-columns>
+                    <e-grid-column type="checkbox" width="50"></e-grid-column>
+                    <e-grid-column field="ProductID" headerText="ProductID" isPrimaryKey="true" width="120"></e-grid-column>
+                    <e-grid-column field="ProductName" headerText="Product" width="150"></e-grid-column>
+                    <e-grid-column template="#actioncolumn" headerText="Predict" width="120"></e-grid-column>
+                </e-grid-columns>
+            </ejs-grid>
+        </div>
+    </div>
+</div>
+
+
+<script id="actioncolumn" type="text/x-template">
+    <div>
+        <a class="btn btn-danger" href="/Predictions/Predict?id=${ProductID}">
+            <i class="fa-solid fa-rocket"></i>
+        </a>
+    </div>
+</script>
+
+
+</center>
+
+@*<table class="table table-bordered blue-table">
+    <tr class="table table-dark">
+        <th>
+            @Html.DisplayNameFor(model => model.Product[0].ProductID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product[0].ProductName)
+        </th>
+
+        <th></th>
+    </tr>
+
+    <tbody>
+        @foreach (var item in Model.Product)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+
+                <td>
+                    <a asp-page="./Predict" method="get" enctype="multipart/form-data" asp-route-id="@item.ProductID" class="btn btn-primary">Predict</a>
+                </td>
+            </tr>
+
+        }
+
+
+
+    </tbody>
+
+</table>*@
+
+
+
+

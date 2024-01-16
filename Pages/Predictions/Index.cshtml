@@ -1,0 +1,200 @@
+﻿@page
+@model Team21V4._5.Pages.Predictions.IndexModel
+@{
+}
+
+@{
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Predictions";
+
+}
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
+<br />
+
+<div style="text-align: right;">
+    <a asp-page="./AllPredictions" method="get" enctype="multipart/form-data" class="btn btn-primary">Predict All Products</a>
+</div>
+<br />
+<center>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <ejs-grid id="Grid" dataSource="@Model.Product" gridLines=None allowPaging="true" allowSorting="true" allowFiltering="true" allowReordering="true" allowSelection="true" toolbar="@(new List<string>() {"Print","Search","Cancel"})" query="new ej.data.Query().expand('Product')">
+                <e-grid-pagesettings pagesize="8"></e-grid-pagesettings>
+                <e-grid-selectionsettings checkboxMode="ResetOnRowClick" type="Multiple"></e-grid-selectionsettings>
+                <e-grid-editSettings allowAdding="true" allowDeleting="true" allowEditing="true"></e-grid-editSettings>
+                    @*<e-grid-pagesettings pageCount="2"></e-grid-pagesettings>*@
+                <e-grid-editSettings allowAdding="true" allowDeleting="true" allowEditing="true"></e-grid-editSettings>
+                <e-grid-columns>
+                    <e-grid-column type="checkbox" width="50"></e-grid-column>
+                    <e-grid-column field="ProductID" headerText="ProductID" isPrimaryKey="true" width="120"></e-grid-column>
+                    <e-grid-column field="ProductName" headerText="Product" width="150"></e-grid-column>
+                    <e-grid-column template="#actioncolumn" headerText="Predict" width="120"></e-grid-column>
+                </e-grid-columns>
+            </ejs-grid>
+        </div>
+    </div>
+</div>
+
+
+<script id="actioncolumn" type="text/x-template">
+    <div>
+        <a class="btn btn-danger" href="/Predictions/Predict?id=${ProductID}">
+            <i class="fas fa-rocket"></i>
+        </a>
+    </div>
+</script>
+
+
+</center>
+
+@*<table class="table table-bordered blue-table">
+    <tr class="table table-dark">
+        <th>
+            @Html.DisplayNameFor(model => model.Product[0].ProductID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product[0].ProductName)
+        </th>
+
+        <th></th>
+    </tr>
+
+    <tbody>
+        @foreach (var item in Model.Product)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+
+                <td>
+                    <a asp-page="./Predict" method="get" enctype="multipart/form-data" asp-route-id="@item.ProductID" class="btn btn-primary">Predict</a>
+                </td>
+            </tr>
+
+        }
+
+
+
+    </tbody>
+
+</table>*@
+
+
+
+<style>
+    .blue-table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #f8f8f8;
+        border: 1px solid #ddd;
+        font-family: Arial, sans-serif;
+    }
+
+    .table-dark th {
+        background-color: #343a40;
+        color: white;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .table-bordered td, .table-bordered th {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+    }
+
+    .table-bordered tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    .blue-button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .blue-button:hover {
+        background-color: #0056b3;
+    }
+
+
+
+
+    .e-toolbar .e-tbar-btn-text, .e-toolbar .e-toolbar-items .e-toolbar-item .e-tbar-btn-text {
+        display: none;
+    }
+
+    .e-grid .e-gridheader {
+        border: 2px solid green;
+        font-size: 10px;
+    }
+
+    .e-grid .e-headercell {
+        color: darkblue;
+    }
+
+    .e-grid {
+        font-family: cursive;
+    }
+
+        .e-grid .e-row:hover .e-rowcell {
+            background-color: rgb(204, 229, 255) !important;
+        }
+
+        .e-grid .e-rowcell.e-selectionbackground {
+            background-color: rgb(230, 230, 250);
+        }
+
+        .e-grid .e-row.e-altrow {
+            background-color: rgb(150, 212, 212);
+        }
+
+        .e-grid .e-row {
+            background-color: rgb(180, 180, 180);
+        }
+
+        .e-grid .e-pagercontainer {
+            background-color: rgb(150, 212, 212);
+        }
+
+        .e-grid .e-icon-ascending::before {
+            content: '\e306';
+        }
+
+        .e-grid .e-icon-ascending::before {
+            content: '\e304';
+        }
+
+        .e-grid .e-sortnumber {
+            background-color: #deecf9;
+            font-family: cursive;
+        }
+
+        .e-grid .e-filterbarcell .e-input-group input.e-input {
+            font-family: cursive;
+        }
+
+        .e-grid .e-filterbarcell .e-input-group .e-clear-icon::before {
+            content: '\e825';
+        }
+
+        .e-grid .e-toolbar-items {
+            background-color: #deecf9;
+        }
+
+</style>

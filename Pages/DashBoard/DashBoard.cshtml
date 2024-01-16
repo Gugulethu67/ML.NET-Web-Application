@@ -1,0 +1,288 @@
+﻿@page
+@model Team21V4._5.Pages.DashBoard.DashBoardModel
+@{
+}
+@{
+    var impact = ViewData["impact"];
+    var top5ProductIDs = TempData["Top5ProductIDs"] as string;
+    var productIDsArray = top5ProductIDs?.Split(',');
+    var firstProductID = productIDsArray?[0]?.Trim('\'');
+    var SecondProductID = productIDsArray?[1]?.Trim('\'');
+
+    var firstScore = TempData["1stScores"];
+    var secondScore = TempData["2ndScores"];
+
+    var firstProductNamesStockOut = TempData["1stStockOut"];
+    var SecondProductNamesStockOut = TempData["2ndStockOut"];
+
+    var todayTemp = ViewData["TodayTemp"];
+
+}
+
+
+
+<script>
+    window.weatherWidgetConfig = window.weatherWidgetConfig || [];
+    window.weatherWidgetConfig.push({
+        selector: ".weatherWidget",
+        apiKey: "9RWE2PZD2UJCEF7TYHNF4AG7T",
+        location: "Cape Town, South Africa",
+        unitGroup: "metric",
+        forecastDays: 14, // Fetch data for 7 days
+        title: "Cape Town, South Africa",
+        showTitle: true,
+        showConditions: true
+    });
+</script>
+<script>
+
+
+
+    (function () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://www.visualcrossing.com/widgets/forecast-simple/weather-forecast-widget-simple.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    });
+
+    // Fetch weather data for the next 14 days
+    fetch("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Cape%20town?unitGroup=metric&include=days&key=9RWE2PZD2UJCEF7TYHNF4AG7T&contentType=json&days=14")
+        .then(response => response.json())
+        .then(data => {
+            // Access the weather data for the next 14 days
+            const weatherDays = data.days.slice(0, 14); // Limit to the first 14 days
+
+            // Display weather data along with the day of the week (first 3 letters) above the temperature
+            const weatherDisplay = document.getElementById("weatherDisplay");
+            weatherDays.forEach(day => {
+                const date = new Date(day.datetime);
+                const dayOfWeek = date.toLocaleDateString('en-US', { weekday: 'long' }).slice(0, 3); // Get first 3 letters
+                const temperature = day.temp;
+
+                // Create a new div element for each day's weather info
+                const div = document.createElement('div');
+                div.className = 'weather-info';
+
+                // Create span elements for day of the week and temperature
+                const daySpan = document.createElement('span');
+                daySpan.textContent = dayOfWeek;
+
+                const tempSpan = document.createElement('span');
+                tempSpan.textContent = `${temperature}°C`;
+
+                // Append the spans to the div
+                div.appendChild(daySpan);
+                div.appendChild(tempSpan);
+
+                // Append the div to the weatherDisplay element
+                weatherDisplay.appendChild(div);
+            });
+        })
+        .catch(err => {
+            console.error(err);
+        });
+
+</script>
+
+
+
+<!-- HTML element to display weather data -->
+<div id="weatherDisplay" class="weather-container"></div>
+
+
+<style>
+    .weather-container {
+        display: flex;
+        flex-direction: row; /* Display items horizontally */
+        justify-content: space-around; /* Optional: Adjust the alignment of items */
+    }
+
+
+
+    .weather-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-right: 20px;
+    }
+</style>
+
+
+
+<div class="weekly-card">
+    <h3>Weekly Sales</h3>
+    <canvas id="WeekLine"></canvas>
+</div>
+
+<div class="dashboard-card">
+    <h3>Weather Impact Analysis</h3>
+    <h2>Current Weather: @todayTemp °C</h2>
+    <h2>Sales Impact: @impact%</h2>  
+</div>
+
+
+<div class="monthly-card">
+    <h3>Sales Trend</h3>
+    <canvas id="Monthly"></canvas>
+</div>
+
+<div class="dashboard-card">
+    <h3>Today's Top Products</h3>
+    <canvas id="ProdBar"></canvas>
+</div>
+
+<div class="dashboard-card">
+    <h3>Inventory Status</h3>
+    <p>Possible Stock Out Warning</p>
+
+    <!-- Card for "Roast Ch Sw" -->
+    <div class="product-card">
+        <h3>@firstProductID</h3>
+        <p>Predicted: @firstScore</p>
+        <p>Remaining: @firstProductNamesStockOut<p>
+    </div>
+
+    <!-- Duplicate the card for other products -->
+    <div class="product-card">
+        <h3>@SecondProductID</h3>
+        <p>Predicted: @secondScore</p>
+        <p>Remaining: @SecondProductNamesStockOut</p>
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+    const top5ProductName = [@Html.Raw(TempData["Top5ProductIDs"]) ];
+    const top5Scores = [@Html.Raw(TempData["Top5Scores"]) ];
+
+    const ctx1 = document.getElementById('ProdBar');
+    const ProdBar = new Chart(ctx1, {
+        type: 'bar',
+        data: {
+            labels: top5ProductName,
+            datasets: [{
+                label: 'Sales',
+                data: top5Scores,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    const daysOfWeekString = [@Html.Raw(ViewData["daysOfWeekString"]) ];
+    const WeeklySalesData = [@Html.Raw(ViewData["WeeklySalesData"]) ];
+
+
+    const ctxW = document.getElementById('WeekLine');
+    const WeekLine = new Chart(ctxW, {
+        type: 'line',
+        data: {
+            labels: daysOfWeekString,
+            datasets: [{
+                label: 'Sales',
+                data: WeeklySalesData,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    const skipped = (ctx, value) => ctx.p0.skip || ctx.p1.skip ? value : undefined;
+    const down = (ctx, value) => ctx.p0.parsed.y > ctx.p1.parsed.y ? value : undefined;
+
+    const monthlyData = [@Html.Raw(ViewData["monthlyData"])];
+
+    const ctxM = document.getElementById('Monthly');
+    const Monthly = new Chart(ctxM, {
+        type: 'line',
+        data: {
+            labels: ['Jun \'22', 'Jul \'22', 'Aug \'22', 'Sep \'22', 'Oct \'22', 'Nov \'22', 'Dec \'22', 'Jan \'23', 'Feb \'23', 'Mar \'23', 'Apr \'23', 'May \'23', 'Jun \'23', 'Jun \'23', 'Jul \'23', 'Aug \'23', 'Sep \'23', 'Oct \'23'],
+            datasets: [{
+                label: 'Sales',
+                data: [14123, 14073, 14926, 14225, 14481, 16509, 17447, 17684, 17841, 19144, 18479, 18111, 17423, 17232, 16842, 16556, 15822, monthlyData],
+                borderWidth: 1,
+                borderColor: 'rgb(75, 192, 192)',
+                pointBorderWidth: 1,
+                pointRadius: 3,
+                pointHoverRadius: 4,
+                segment: {
+                    borderColor: (ctx) => {
+                        if (ctx.p0.parsed.x === 16 && ctx.p1.parsed.x === 17) {
+                            return 'rgb(100, 100, 100, 0.8)'; // Apply a dashed border between November and December
+                        }
+                        return 'rgb(75, 192, 192)'; // Use the default border color for other segments
+                    },
+                    borderDash: (ctx) => {
+                        if (ctx.p0.parsed.x === 16 && ctx.p1.parsed.x === 17) {
+                            return [6, 6]; // Apply a dashed border between November and December
+                        }
+                        return []; // Use a solid border for other segments
+                    },
+                },
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            maintainAspectRatio: false,
+            responsive: true,
+            aspectRatio: 2,
+            plugins: {
+                legend: {
+                    display: false // Hide the legend
+                }
+            }
+        }
+    });
+
+</script>
+
+
+<script>
+    window.weatherWidgetConfig = window.weatherWidgetConfig || [];
+    window.weatherWidgetConfig.push({
+        selector: ".weatherWidget",
+        apiKey: "9RWE2PZD2UJCEF7TYHNF4AG7T",
+        location: "Cape Town, South Africa",
+        unitGroup: "metric",
+        forecastDays: 14, // Fetch data for 14 days
+        title: "Cape Town, South Africa",
+        showTitle: true,
+        showConditions: true,
+        callback: function (data) {
+            // Extract and display the current temperature
+            var currentTemperature = data.currentConditions.temp;
+            document.getElementById("currentTemperature").textContent = "Current Temperature: " + currentTemperature + "°C";
+
+            // Redirect to the Predict page with today's temperature
+            //const id = 75;
+            //const ProductName = "Roast Chk Sw";
+            window.location.href = `/Predict?id=${id}&ProductName=${encodeURIComponent(ProductName)}&todayTemperature=${currentTemperature}`;
+        }
+    });
+
+    (function () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://www.visualcrossing.com/widgets/forecast-simple/weather-forecast-widget-simple.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>

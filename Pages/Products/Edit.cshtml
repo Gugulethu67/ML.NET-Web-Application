@@ -1,0 +1,76 @@
+﻿@page
+@model Team21V4._5.Pages.Products.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Product</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Product.ProductID" />
+            <div class="form-group">
+                <label asp-for="Product.ProductName" class="control-label"></label>
+                <input asp-for="Product.ProductName" class="form-control" />
+                <span asp-validation-for="Product.ProductName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.DateAdded" class="control-label"></label>
+                <input asp-for="Product.DateAdded" class="form-control" />
+                <span asp-validation-for="Product.DateAdded" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.StockOnHand" class="control-label"></label>
+                <input asp-for="Product.StockOnHand" class="form-control" />
+                <span asp-validation-for="Product.StockOnHand" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                <label asp-for="Product.DeliveredQuantity" class="control-label"></label>
+                <input asp-for="Product.DeliveredQuantity" class="form-control" />
+                <span asp-validation-for="Product.DeliveredQuantity" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="Product.Department" class="control-label"></label>
+                <input asp-for="Product.Department" class="form-control" />
+                <span asp-validation-for="Product.Department" class="text-danger"></span>
+            </div>
+           @*<div class="form-group">
+                <label asp-for="Product.WasteQuantity" class="control-label"></label>
+                <input asp-for="Product.WasteQuantity" class="form-control" />
+                <span asp-validation-for="Product.WasteQuantity" class="text-danger"></span>
+            </div>*@
+            @*<div class="form-group">
+                <label asp-for="Product.BoughtStock" class="control-label"></label>
+                <input asp-for="Product.BoughtStock" class="form-control" />
+                <span asp-validation-for="Product.BoughtStock" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="Product.Temperature" class="control-label"></label>
+                <input asp-for="Product.Temperature" class="form-control" />
+                <span asp-validation-for="Product.Temperature" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                <label asp-for="Product.Precipitation" class="control-label"></label>
+                <input asp-for="Product.Precipitation" class="form-control" />
+                <span asp-validation-for="Product.Precipitation" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

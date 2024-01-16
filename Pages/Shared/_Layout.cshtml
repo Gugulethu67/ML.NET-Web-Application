@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Team21V4._5</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- Syncfusion ASP.NET Core controls styles -->
+    <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/23.1.36/material.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Team21V4._5.styles.css" asp-append-version="true" />
+
+    <!-- Syncfusion ASP.NET Core controls scripts -->
+    <script src="https://cdn.syncfusion.com/ej2/23.1.36/dist/ej2.min.js"></script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+
+</head>
+<body>
+
+    <partial name="_SideBar"/>
+    <div class="dock-target">
+    <nav class="navbar sticky-top navbar-light">
+        <div class="container-fluid py-2 px-4">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <div>
+                <i class="fa-solid fa-bell"></i>
+                <i class="fa-solid fa-message"></i>
+                    
+            </div>
+            <div> <partial name="_LoginPartial" /></div>
+        </div>
+    </nav>
+    
+
+
+    <@*nav class="navbar sticky-top navbar-light">
+        <div class="container-fluid py-2 px-4">
+            <a class="navbar-brand" href="#">Sticky top</a>
+
+            <!-- Bell Icon -->
+            <i class="fa-solid fa-bell" style="color: black; font-size: 24px; margin-right: 10px;"></i>
+
+            <!-- Message Icon -->
+            <i class="fa-solid fa-envelope" style="color: black; font-size: 24px;"></i>
+        </div>
+    </nav>*@
+
+
+
+    <div class="main-content">
+    <div class="container">
+        <main role="main" class="pb-3">
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="d-flex flex-column pb-5">
+                        <div class="d-flex mb-1">
+                            <div class="flex-grow-1">
+                            <h3 class="fw-bold">@ViewData["Title"]</h3>
+                            </div>
+                            <div>
+                                @if (@ViewData["PageActionText"] != null)
+                                {
+                                    <a class="btn btn-success" href="@ViewData["PageActionUrl"]">
+                                    @ViewData["PageActionText"]
+                                    </a>
+                                }
+                                
+                            </div>
+                        </div>
+                        <ejs-breadcrumb id="breadcrumb"></ejs-breadcrumb>
+                    </div>
+                </div>
+            </div>
+            @RenderBody()
+        </main>
+    </div>
+    </div>
+    </div>
+    @*<style>
+        .main-content{
+            margin-left:290px;
+        }
+
+        #sidebar {
+            background-color:#12161d;
+            border-right:1px dashed rgba(75,82,85,0,24);
+            padding:10px 20px;
+        }
+        
+    </style>*@
+
+@*    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2023 - Team21V4._5 - <a asp-area="" asp-page="/Privacy">Privacy</a>
+        </div>
+    </footer>
+    
+*@
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+    <!-- Syncfusion ASP.NET Core Script Manager -->
+    <ejs-scripts></ejs-scripts>
+</body>
+</html>

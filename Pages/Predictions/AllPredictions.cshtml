@@ -1,0 +1,45 @@
+﻿@page
+@model Team21V4._5.Pages.Predictions.AllPredictionsModel
+@{
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Predict All";
+    
+}
+<head>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+
+<center>
+    <h2>Here is a list of all Predictions:</h2>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <ejs-grid id="Grid" dataSource="@Model.predictions" allowPaging="true" allowSorting="true" allowFiltering="true" allowReordering="true" toolbar="@(new List<string>() { "Print","Search"})" allowSelection="true">
+                    <e-grid-pagesettings pagesize="8"></e-grid-pagesettings>
+                    <e-grid-selectionsettings checkboxMode="ResetOnRowClick" type="Multiple"></e-grid-selectionsettings>
+                    @*<e-grid-pagesettings pageCount="2"></e-grid-pagesettings>*@
+                    <e-grid-editSettings allowAdding="true" allowDeleting="true" allowEditing="true"></e-grid-editSettings>
+                    <e-grid-columns>
+                        <e-grid-column type="checkbox" width="50"></e-grid-column>
+                        <e-grid-column field="ProductID" headerText="ProductID" isPrimaryKey="true" width="120"></e-grid-column>
+                        <e-grid-column field="ProductName" headerText="Product" width="150"></e-grid-column>
+                        <e-grid-column field="Score" headerText="Score" width="150"></e-grid-column>
+                    </e-grid-columns>
+                </ejs-grid>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <div>
+        <a class="btn-dark btn-sm blue-button" asp-page="./Recommendations" method="Index">Back to List</a>
+    </div>
+</center>
+
+<script>
+    $(document).ready(function () {
+        $('.toast').toast('show');
+    });
+</script>

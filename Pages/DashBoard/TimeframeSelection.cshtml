@@ -1,0 +1,25 @@
+﻿@page
+@model Team21V4._5.Pages.DashBoard.TimeframeSelectionModel
+@{
+}
+
+<label for="timeframe">Select Timeframe:</label>
+<select class="form-control" id="timeframe">
+    <option value="ThisWeek">This Week</option>
+    <option value="NextWeek">Next Week</option>
+    <option value="Month">One Month</option>
+</select>
+<button class="btn btn-primary" id="loadDashboard">Load Dashboard</button>
+
+<script>
+    document.getElementById("loadDashboard").addEventListener("click", function () {
+        // Get the selected timeframe from the dropdown
+        var selectedTimeframe = document.getElementById("timeframe").value;
+
+        // Build the URL with the query parameter
+        var dashboardUrl = `/Dashboard/Dashboard?selectedTimeframe=${selectedTimeframe}`;
+
+        // Navigate to the Dashboard page
+        window.location.href = dashboardUrl;
+    });
+</script>

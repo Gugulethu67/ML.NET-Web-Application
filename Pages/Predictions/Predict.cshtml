@@ -1,0 +1,90 @@
+﻿@page
+@model Team21V4._5.Pages.Predictions.PredictModel
+@{
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Predict";
+    
+}
+<head>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+
+<center>
+    <br><br>
+
+    <h2>Here is a Prediction:</h2>
+
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <ejs-grid id="Grid" dataSource="@Model.predictions" toolbar="@(new List<string>() { "Search"})" allowSelection="true" contextMenuItems="@(new List<object>() { "Copy", "Edit", "Delete"})">
+                    <e-grid-pagesettings pagesize="8"></e-grid-pagesettings>
+                    <e-grid-selectionsettings checkboxMode="ResetOnRowClick" type="Multiple"></e-grid-selectionsettings>
+                    @*<e-grid-pagesettings pageCount="2"></e-grid-pagesettings>*@
+                    <e-grid-editSettings allowAdding="true" allowDeleting="true" allowEditing="true"></e-grid-editSettings>
+                    <e-grid-columns>
+                        <e-grid-column type="checkbox" width="50"></e-grid-column>
+                        <e-grid-column field="ProductID" headerText="ProductID" isPrimaryKey="true" width="120"></e-grid-column>
+                        <e-grid-column field="ProductName" headerText="Product" width="150"></e-grid-column>
+                        <e-grid-column field="Score" headerText="Score" width="150"></e-grid-column>
+                    </e-grid-columns>
+                </ejs-grid>
+            </div>
+        </div>
+    </div>
+
+
+
+    @*<table class="table table-bordered blue-table">
+        <tr class="table table-dark">
+            <th>
+                @Html.DisplayNameFor(model => model.predictions[0].ProductID)
+            </th>
+            <th>
+            @Html.DisplayNameFor(model => model.predictions[0].ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.predictions[0].Score)
+            </th>
+        </tr>
+        <tbody>
+            @foreach (var item in Model.predictions)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => item.ProductID)
+                    </td>
+                    <td>
+                @Html.DisplayFor(model => item.ProductName)
+                </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Score)
+                    </td>
+                    @*<td>@item.ProductName? </td>*@@*
+                </tr>
+            }
+            <tr>
+                <td>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+        </tbody>
+
+    </table>*@
+    <br>
+
+    <div>
+        <a class="btn-dark btn-sm" asp-page="./Recommendations" method="Index">Back to List</a>
+    </div>
+</center>
+
+<script>
+    $(document).ready(function () {
+        $('.toast').toast('show');
+    });
+</script>
+
+
+

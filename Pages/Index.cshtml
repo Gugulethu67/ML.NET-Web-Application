@@ -1,0 +1,334 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+
+    <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha384-+2lJjDH5Iq5kzJPrp0EcXZuhByJwz8ejyU5RP4lsTf2+rSHY5Vq2PQ/sFZbwKdkHJ" crossorigin="anonymous">
+    </head>
+<!-- Content Container -->
+    <div class="content-container">
+        <!-- Video Background -->
+        <div class="video-background">
+            <video autoplay muted loop>
+            <source src="https://video.wixstatic.com/video/c837a6_02de7d4c43d44b7b890854049ed75da8/1080p/mp4/file.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            
+            </video>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Your main content goes here -->
+        @*<h1>
+            Welcome <br /> @if (!SignInManager.IsSignedIn(User))
+            {
+                <span>Register now to get started:  <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Register"><div style="color:darkblue"> Click to Register</div></a></span>
+            }
+                @User.Identity?.Name
+            </h1>*@
+            <div class="w3ls_banner_info">
+                <h3>
+                    Welcome <br /> @if (!SignInManager.IsSignedIn(User))
+                    {
+                        <span>Register now to get started:  <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Register"><div style="color:darkblue"> Click to Register</div></a></span>
+                    }
+                    @User.Identity?.Name
+                </h3>
+					   
+		    </div>
+
+        </div>
+    </div>
+
+
+   @* <footer class="SITE_FOOTER_WRAPPER" tabindex="-1" id="SITE_FOOTER_WRAPPER">
+        <div id="SITE_FOOTER" class="AT7o0U SITE_FOOTER wixui-footer" tabindex="-1">
+            <div class="lvxhkV"></div>
+            <div class="cKxVkc">
+                <div class="vlM3HR"></div>
+                <div class="VrZrC0">
+                    <div data-mesh-id="SITE_FOOTERinlineContent" data-testid="inline-content" class="">
+                        <div data-mesh-id="SITE_FOOTERinlineContent-gridContainer" data-testid="mesh-container-content">
+                            <section id="comp-kmc2y4vz" class="comp-kmc2y4vz CohWsy wixui-column-strip">
+                                <div id="bgLayers_comp-kmc2y4vz" data-hook="bgLayers" class="if7Vw2">
+                                    <div data-testid="colorUnderlay" class="tcElKx i1tH8h"></div>
+                                        <div id="bgMedia_comp-kmc2y4vz" class="wG8dni"></div>
+                                    </div><div data-testid="columns" class="V5AUxf">
+                                        <div id="comp-kmc2y51l" class="comp-kmc2y51l YzqVVZ wixui-column-strip__column">
+                                            <div id="bgLayers_comp-kmc2y51l" data-hook="bgLayers" class="MW5IWV">
+                                                <div data-testid="colorUnderlay" class="LWbAav Kv1aVt"></div>
+                                                <div id="bgMedia_comp-kmc2y51l" class="VgO9Yg"></div>
+                                            </div>
+                                            <div data-mesh-id="comp-kmc2y51linlineContent" data-testid="inline-content" class="">
+                                                <div data-mesh-id="comp-kmc2y51linlineContent-gridContainer" data-testid="mesh-container-content">
+                                                    <div id="comp-kmc33g1e" class="KcpHeO tz5f0K comp-kmc33g1e wixui-rich-text" data-testid="richTextElement">
+                                                        <p class="font_4 wixui-rich-text__text" style="line-height:normal; font-size:20px;">
+                                                            <a href="https://www.wix.com/demone2/autono" target="_self" class="wixui-rich-text__text">
+                                                                <span style="letter-spacing:0.35em;" class="wixui-rich-text__text">AUTONO</span>
+                                                                </a></p>
+                                                                </div>
+                                                                <div id="comp-kmc35kic" class="BaOVQ8 tz5f0K comp-kmc35kic wixui-rich-text" data-testid="richTextElement">
+                                                                    <p class="font_8 wixui-rich-text__text" style="font-size:16px;">
+                                                                        <a href="https://www.wix.com/demone2/autono/technology" target="_self" class="wixui-rich-text__text">
+                                                                            <span style="letter-spacing:0.04em;" class="wixui-rich-text__text">Technology</span></a></p></div>
+                                                                                <div id="comp-kmkfwq0d" class="BaOVQ8 tz5f0K comp-kmkfwq0d wixui-rich-text" data-testid="richTextElement">
+                                                                                    <p class="font_8 wixui-rich-text__text" style="font-size:16px;">
+                                                                                        <a href="https://www.wix.com/demone2/autono/about" target="_self" class="wixui-rich-text__text">
+                                                                                            <span style="letter-spacing:0.04em;" class="wixui-rich-text__text">About</span>
+                                                                                        </a>
+                                                                                    </p>
+                                                                                </div>
+                                                                                <div id="comp-kmc38htf" class="BaOVQ8 tz5f0K comp-kmc38htf wixui-rich-text" data-testid="richTextElement">
+                                                                                    <p class="font_8 wixui-rich-text__text" style="font-size:16px;">
+                                                                                        <a href="https://www.wix.com/demone2/autono/careers" target="_self" class="wixui-rich-text__text">
+                                                                                            <span style="letter-spacing:0.04em;" class="wixui-rich-text__text">Careers</span>
+                                                                                        </a></p>
+                                                                                </div>
+                                                                                <div id="comp-kmkfux08" class="BaOVQ8 tz5f0K comp-kmkfux08 wixui-rich-text" data-testid="richTextElement">
+                                                                                    <p class="font_8 wixui-rich-text__text" style="font-size:16px;">
+                                                                                        <span style="letter-spacing:0.04em;" class="wixui-rich-text__text">Tel: 123-456-7890</span></p>
+                                                                                </div>
+                                                            <div id="comp-kn4nqqbg" class="BaOVQ8 tz5f0K comp-kn4nqqbg wixui-rich-text" data-testid="richTextElement"><p class="font_8 wixui-rich-text__text" style="line-height:1.2em; font-size:16px;"><span style="letter-spacing:0.05em;" class="wixui-rich-text__text">Email: <a data-auto-recognition="true" href="mailto:info@mysite.com" class="wixui-rich-text__text">info@mysite.com</a></span></p></div><div id="comp-kmkpu4b2" class="BaOVQ8 tz5f0K comp-kmkpu4b2 wixui-rich-text" data-testid="richTextElement">
+                                                                <p class="font_8 wixui-rich-text__text" style="line-height:1.8em; font-size:16px;">
+                                                                <span style="letter-spacing:0.04em;" class="wixui-rich-text__text">500 Terry Francine St San Francisco, CA 94158</span></p></div><div data-mesh-id="comp-kmc2y51linlineContent-wedge-3"></div></div></div></div><div id="comp-kmc331if" class="comp-kmc331if YzqVVZ wixui-column-strip__column"><div id="bgLayers_comp-kmc331if" data-hook="bgLayers" class="MW5IWV"><div data-testid="colorUnderlay" class="LWbAav Kv1aVt"></div><div id="bgMedia_comp-kmc331if" class="VgO9Yg"></div></div><div data-mesh-id="comp-kmc331ifinlineContent" data-testid="inline-content" class=""><div data-mesh-id="comp-kmc331ifinlineContent-gridContainer" data-testid="mesh-container-content"><div id="comp-kmkqgkp6" class="BaOVQ8 tz5f0K comp-kmkqgkp6 wixui-rich-text" data-testid="richTextElement">
+                                                                <h2 class="font_5 wixui-rich-text__text" style="line-height:1.8em; font-size:18px;"><span style="letter-spacing:0.08em;" class="wixui-rich-text__text">SUBSCRIBE</span></h2></div><div id="comp-kmkfvq1m" class="BaOVQ8 tz5f0K comp-kmkfvq1m wixui-rich-text" data-testid="richTextElement"><p class="font_8 wixui-rich-text__text" style="line-height:1.8em; font-size:16px;">
+                                                                    <span style="letter-spacing:0.05em;" class="wixui-rich-text__text">Sign up to receive Autono news and updates.</span></p></div>
+                                                            <div id="comp-kmkon1qf" class="bkIuWA comp-kmkon1qf"><div data-mesh-id="comp-kmkon1qfinlineContent" data-testid="inline-content" class=""><div data-mesh-id="comp-kmkon1qfinlineContent-gridContainer" data-testid="mesh-container-content"><form id="comp-kmkon1ro1" class="JVi7i2 comp-kmkon1ro1 wixui-form"><div data-mesh-id="comp-kmkon1ro1inlineContent" data-testid="inline-content" class="">
+                                                                <div data-mesh-id="comp-kmkon1ro1inlineContent-gridContainer" data-testid="mesh-container-content"><div id="comp-kmkon1s1" class="MpKiNN comp-kmkon1s1 wixui-text-input qzvPmW lPl_oN"><label for="input_comp-kmkon1s1" class="wPeA6j wixui-text-input__label">Email</label>
+                                                                <div class="pUnTVX"><input name="email" id="input_comp-kmkon1s1" class="KvoMHf has-custom-focus wixui-text-input__input" type="email" placeholder="" required="" aria-required="true" maxlength="250" value=""></div></div><div class="comp-kmkon1s91 R6ex7N" id="comp-kmkon1s91" aria-disabled="false"><button aria-disabled="false" data-testid="buttonElement" class="kuTaGy wixui-button zKbzSQ">
+                                                                <span class="M3I7Z2 wixui-button__label">Subscribe</span></button></div><div id="comp-kmkon1sf" class="BaOVQ8 tz5f0K comp-kmkon1sf wixui-rich-text" data-testid="richTextElement"><p class="font_8 wixui-rich-text__text" style="font-size:16px;"><span style="letter-spacing:0.04em;" class="wixui-rich-text__text">
+                                                                <span class="color_15 wixui-rich-text__text">Thanks for submitting!</span></span></p></div></div></div></form></div></div></div></div></div></div></div></section>
+                                                            <section id="comp-kmc3dtwj" class="comp-kmc3dtwj CohWsy wixui-column-strip">
+                                                                <div id="bgLayers_comp-kmc3dtwj" data-hook="bgLayers" class="if7Vw2"><div data-testid="colorUnderlay" class="tcElKx i1tH8h"></div><div id="bgMedia_comp-kmc3dtwj" class="wG8dni"></div></div><div data-testid="columns" class="V5AUxf"><div id="comp-kmc3du2o" class="comp-kmc3du2o YzqVVZ wixui-column-strip__column"><div id="bgLayers_comp-kmc3du2o" data-hook="bgLayers" class="MW5IWV"><div data-testid="colorUnderlay" class="LWbAav Kv1aVt"></div>
+                                                                <div id="bgMedia_comp-kmc3du2o" class="VgO9Yg"></div></div><div data-mesh-id="comp-kmc3du2oinlineContent" data-testid="inline-content" class=""><div data-mesh-id="comp-kmc3du2oinlineContent-gridContainer" data-testid="mesh-container-content">
+                                                                <div id="comp-kmc37c5k" class="KcpHeO tz5f0K comp-kmc37c5k wixui-rich-text" data-testid="richTextElement"><p class="font_8 wixui-rich-text__text" style="line-height:1.8em; font-size:16px;"><span style="letter-spacing:0.04em;" class="wixui-rich-text__text">© 2035 by Autono. Powered and secured by <span style="text-decoration:underline;" class="wixui-rich-text__text"><a href="https://wix.com/?utm_campaign=vir_created_with" target="_blank" rel="noreferrer noopener" class="wixui-rich-text__text">Wix</a></span></span></p></div></div></div></div>
+                                                                <div id="comp-kmxjmc6u" class="comp-kmxjmc6u YzqVVZ wixui-column-strip__column"><div id="bgLayers_comp-kmxjmc6u" data-hook="bgLayers" class="MW5IWV"><div data-testid="colorUnderlay" class="LWbAav Kv1aVt"></div>
+                                                                <div id="bgMedia_comp-kmxjmc6u" class="VgO9Yg"></div></div><div data-mesh-id="comp-kmxjmc6uinlineContent" data-testid="inline-content" class=""><div data-mesh-id="comp-kmxjmc6uinlineContent-gridContainer" data-testid="mesh-container-content">
+                                                                    <div id="comp-kmxjmca2" class="comp-kmxjmca2 WzbAF8"><ul class="mpGTIt" aria-label="Social Bar"><li id="dataItem-kmxjmca31-comp-kmxjmca2" class="O6KwRn"><a data-testid="linkElement" href="https://www.linkedin.com/company/wix-com" target="_blank" class="oRtuWN"><wow-image id="img_0_comp-kmxjmca2" class="HlRz5e YaS0jR" data-image-info="{&quot;containerId&quot;:&quot;dataItem-kmxjmca31-comp-kmxjmca2&quot;,&quot;displayMode&quot;:&quot;fill&quot;,&quot;imageData&quot;:{&quot;width&quot;:200,&quot;height&quot;:200,&quot;uri&quot;:&quot;6ea5b4a88f0b4f91945b40499aa0af00.png&quot;,&quot;name&quot;:&quot;&quot;,&quot;displayMode&quot;:&quot;fill&quot;}}" data-bg-effect-name="" data-has-ssr-src="" style="--wix-img-max-width:max(200px, 100%)" data-src="https://static.wixstatic.com/media/6ea5b4a88f0b4f91945b40499aa0af00.png/v1/fill/w_24,h_24,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/6ea5b4a88f0b4f91945b40499aa0af00.png">
+                                                                <img alt="LinkedIn" style="width: 24px; height: 24px; object-fit: cover;" fetchpriority="high" src="https://static.wixstatic.com/media/6ea5b4a88f0b4f91945b40499aa0af00.png/v1/fill/w_24,h_24,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/6ea5b4a88f0b4f91945b40499aa0af00.png"></wow-image></a></li>
+                                                                <li id="dataItem-kmxjmcaa-comp-kmxjmca2" class="O6KwRn"><a data-testid="linkElement" href="https://www.facebook.com/wix" target="_blank" class="oRtuWN"><wow-image id="img_1_comp-kmxjmca2" class="HlRz5e YaS0jR" data-image-info="{&quot;containerId&quot;:&quot;dataItem-kmxjmcaa-comp-kmxjmca2&quot;,&quot;displayMode&quot;:&quot;fill&quot;,&quot;imageData&quot;:{&quot;width&quot;:200,&quot;height&quot;:200,&quot;uri&quot;:&quot;0fdef751204647a3bbd7eaa2827ed4f9.png&quot;,&quot;name&quot;:&quot;&quot;,&quot;displayMode&quot;:&quot;fill&quot;}}" data-bg-effect-name="" data-has-ssr-src="" style="--wix-img-max-width:max(200px, 100%)" data-src="https://static.wixstatic.com/media/0fdef751204647a3bbd7eaa2827ed4f9.png/v1/fill/w_24,h_24,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/0fdef751204647a3bbd7eaa2827ed4f9.png">
+                                                                <img alt="Facebook" style="width: 24px; height: 24px; object-fit: cover;" fetchpriority="high" src="https://static.wixstatic.com/media/0fdef751204647a3bbd7eaa2827ed4f9.png/v1/fill/w_24,h_24,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/0fdef751204647a3bbd7eaa2827ed4f9.png"></wow-image></a></li>
+                                                                <li id="dataItem-kmxjmcaa2-comp-kmxjmca2" class="O6KwRn"><a data-testid="linkElement" href="https://www.twitter.com/wix" target="_blank" class="oRtuWN"><wow-image id="img_2_comp-kmxjmca2" class="HlRz5e YaS0jR" data-image-info="{&quot;containerId&quot;:&quot;dataItem-kmxjmcaa2-comp-kmxjmca2&quot;,&quot;displayMode&quot;:&quot;fill&quot;,&quot;imageData&quot;:{&quot;width&quot;:200,&quot;height&quot;:200,&quot;uri&quot;:&quot;c7d035ba85f6486680c2facedecdcf4d.png&quot;,&quot;name&quot;:&quot;&quot;,&quot;displayMode&quot;:&quot;fill&quot;}}" data-bg-effect-name="" data-has-ssr-src="" style="--wix-img-max-width:max(200px, 100%)" data-src="https://static.wixstatic.com/media/c7d035ba85f6486680c2facedecdcf4d.png/v1/fill/w_24,h_24,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/c7d035ba85f6486680c2facedecdcf4d.png">
+                                                                <img alt="Twitter" style="width: 24px; height: 24px; object-fit: cover;" fetchpriority="high" src="https://static.wixstatic.com/media/c7d035ba85f6486680c2facedecdcf4d.png/v1/fill/w_24,h_24,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/c7d035ba85f6486680c2facedecdcf4d.png"></wow-image></a></li><li id="dataItem-kmxjmcaa4-comp-kmxjmca2" class="O6KwRn"><a data-testid="linkElement" href="https://www.instagram.com/wix" target="_blank" class="oRtuWN">
+                                                                    <wow-image id="img_3_comp-kmxjmca2" class="HlRz5e YaS0jR" data-image-info="{&quot;containerId&quot;:&quot;dataItem-kmxjmcaa4-comp-kmxjmca2&quot;,&quot;displayMode&quot;:&quot;fill&quot;,&quot;imageData&quot;:{&quot;width&quot;:200,&quot;height&quot;:200,&quot;uri&quot;:&quot;01c3aff52f2a4dffa526d7a9843d46ea.png&quot;,&quot;name&quot;:&quot;&quot;,&quot;displayMode&quot;:&quot;fill&quot;}}" data-bg-effect-name="" data-has-ssr-src="" style="--wix-img-max-width:max(200px, 100%)" data-src="https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png/v1/fill/w_24,h_24,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/01c3aff52f2a4dffa526d7a9843d46ea.png">
+                                                                <img alt="Instagram" style="width: 24px; height: 24px; object-fit: cover;" fetchpriority="high" src="https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png/v1/fill/w_24,h_24,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/01c3aff52f2a4dffa526d7a9843d46ea.png"></wow-image></a></li></ul></div></div></div></div></div></section></div></div></div></div></div></footer>
+
+*@
+
+
+@*
+<!-- Footer Section -->
+<footer class="SITE_FOOTER_WRAPPER" tabindex="-1" id="SITE_FOOTER_WRAPPER">
+    <div id="SITE_FOOTER" class="AT7o0U SITE_FOOTER wixui-footer" tabindex="-1">
+        <!-- Footer Content Container -->
+        <div class="footer-content-container">
+            <!-- Autono Logo and Links -->
+            <div class="footer-logo">
+                <a href="https://www.wix.com/demone2/autono" target="_self">
+                    <span class="font_4" style="font-size: 32px;">Cogent</span>
+                </a>
+            </div>
+            <!-- Footer Links -->
+            <div class="footer-links">
+                <a href="https://www.wix.com/demone2/autono/technology" target="_self">
+                    <span class="font_8" style="font-size: 20px; padding-left:10px">Technology</span>
+                </a>
+                <a href="https://www.wix.com/demone2/autono/about" target="_self">
+                    <span class="font_8" style="font-size: 20px; padding-left:10px">About</span>
+                </a>
+                <a href="https://www.wix.com/demone2/autono/careers" target="_self">
+                    <span class="font_8" style="font-size: 20px; padding-left:10px">Careers</span>
+                </a>
+            </div>
+            <!-- Contact Info -->
+            <div class="contact-info">
+                <span class="font_8" style="font-size: 20px;">Tel: 123-456-7890</span>
+                <span class="font_8" style="font-size: 20px;">Email: <a href="mailto:info@mysite.com" style="color: #fff;">info@mysite.com</a></span>
+                @*<span class="font_8" style="font-size: 24px;">500 Terry Francine St San Francisco, CA 94158</span>*@@*
+            </div>
+            <!-- Subscription Form -->
+            <div class="subscription-form">
+                <input type="email" placeholder="Email" class="email-input" style="font-size: 20px; padding: 10px;">
+                <button class="subscribe-button" style="font-size: 20px; padding: 10px 20px;">Subscribe</button>
+            </div>
+        </div>
+    </div>
+    
+
+</footer>
+
+*@
+
+
+
+<style>
+    .content-container {
+    margin-left: 250px; /* Adjust based on the sidebar width */
+    overflow: hidden; /* Hide any overflow from the video background */
+}
+
+/* Define the video background styles */
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Full height of the viewport */
+    z-index: -1; /* Place the video background behind other content */
+}
+
+/* Style the video to cover the entire background */
+.video-background video {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+/* Define the main content styles */
+.main-content {
+    padding: 3px; /* Add padding to your main content */
+        /*overflow: hidden;*/
+
+}
+
+    /* Define the main content styles */
+    .main-content {
+        padding: 3px; /* Add padding to your main content */
+        /* overflow: hidden; */
+    }
+
+    .footer-content-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 40px; /* Increase the padding */
+        background-color: #333; /* Footer background color */
+        color: #fff; /* Text color */
+    }
+
+    .footer-logo a {
+        text-decoration: none;
+        color: #fff;
+        font-size: 32px; /* Increase the font size */
+        font-weight: bold;
+    }
+
+    .footer-links a {
+        margin-right: 30px; /* Increase the margin */
+        text-decoration: none;
+        color: #fff;
+        font-size: 24px; /* Increase the font size */
+    }
+
+    .contact-info .font_8 {
+        margin-right: 30px; /* Increase the margin */
+        font-size: 24px; /* Increase the font size */
+    }
+
+    .subscription-form {
+        display: flex;
+        align-items: center;
+    }
+
+    .email-input {
+        padding: 12px; /* Increase the padding */
+        margin-right: 20px;
+        font-size: 24px; /* Increase the font size */
+    }
+
+    .subscribe-button {
+        padding: 12px 24px; /* Increase the padding */
+        background-color: #4caf50; /* Button background color */
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        font-size: 24px; /* Increase the font size */
+    }
+
+</style>
+
+<!-- JavaScript code to fetch and display weather data as a list -->
+<script>
+    window.weatherWidgetConfig = window.weatherWidgetConfig || [];
+    window.weatherWidgetConfig.push({
+        selector: ".weatherWidget",
+        apiKey: "9RWE2PZD2UJCEF7TYHNF4AG7T",
+        location: "Cape Town, South Africa",
+        unitGroup: "metric",
+        forecastDays: 14, // Fetch data for 14 days
+        title: "Cape Town, South Africa",
+        showTitle: true,
+        showConditions: true
+    });
+
+    (function () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://www.visualcrossing.com/widgets/forecast-simple/weather-forecast-widget-simple.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+
+    // Fetch weather data for the next 2 weeks
+    fetch("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Cape%20town?unitGroup=metric&include=days&key=9RWE2PZD2UJCEF7TYHNF4AG7T&contentType=json&days=14", {
+        "method": "GET",
+        "headers": {}
+    })
+        .then(response => response.json())
+        .then(data => {
+            // Access the weather data for the next 14 days
+            const weatherDays = data.days.slice(0, 14); // Limit to the first 14 days
+
+            // Display weather data (excluding the day of the week) as a list
+            const weatherList = document.getElementById("weatherList");
+            weatherDays.forEach(day => {
+                const temperature = day.temp;
+
+                // Create list item for each day's temperature
+                const listItem = document.createElement('li');
+                listItem.textContent = `${temperature}°C`;
+
+                // Append the list item to the weatherList element
+                weatherList.appendChild(listItem);
+            });
+        })
+        .catch(err => {
+            console.error(err);
+        });
+    // After fetching and displaying weather data
+    const weatherList = document.getElementById("weatherList");
+    const weatherData = [];
+    weatherList.querySelectorAll("li").forEach(item => {
+        weatherData.push(item.textContent);
+    });
+
+    // Pass weatherData as a query parameter when navigating to PredictModel Razor Page
+    const queryString = `?weatherData=${JSON.stringify(weatherData)}`;
+    const predictPageUrl = `/Predictions/PredictModel${queryString}`;
+    window.location.href = predictPageUrl;
+
+
+</script>
+
+@*<!-- JavaScript code to fetch and display weather data as a list -->
+<script>
+    // ... (Your existing JavaScript code)
+
+    // After fetching and displaying weather data
+    const weatherList = document.getElementById("weatherList");
+    const weatherData = [];
+    weatherList.querySelectorAll("li").forEach(item => {
+        weatherData.push(item.textContent);
+    });
+
+    // Pass weatherData as a query parameter when navigating to PredictModel Razor Page
+    const queryString = `?weatherData=${JSON.stringify(weatherData)}`;
+    const predictPageUrl = `/Predictions/PredictModel${queryString}`;
+    window.location.href = predictPageUrl;
+</script>*@
+

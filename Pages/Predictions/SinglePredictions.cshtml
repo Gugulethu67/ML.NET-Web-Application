@@ -1,0 +1,167 @@
+﻿@page
+@model Team21V4._5.Pages.Predictions.SinglePredictionsModel
+
+@{
+    ViewData["Title"] = "Single Prediction";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+
+
+
+
+<script>
+    window.weatherWidgetConfig = window.weatherWidgetConfig || [];
+    window.weatherWidgetConfig.push({
+        selector: ".weatherWidget",
+        apiKey: "9RWE2PZD2UJCEF7TYHNF4AG7T",
+        location: "Cape Town, South Africa",
+        unitGroup: "metric",
+        forecastDays: 14, // Fetch data for 7 days
+        title: "Cape Town, South Africa",
+        showTitle: true,
+        showConditions: true
+    });
+</script>
+<script>
+
+
+
+    (function () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://www.visualcrossing.com/widgets/forecast-simple/weather-forecast-widget-simple.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    });
+
+    // Fetch weather data for the next 14 days
+    fetch("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Cape%20town?unitGroup=metric&include=days&key=9RWE2PZD2UJCEF7TYHNF4AG7T&contentType=json&days=14")
+        .then(response => response.json())
+        .then(data => {
+            // Access the weather data for the next 14 days
+            const weatherDays = data.days.slice(0, 14); // Limit to the first 14 days
+
+            // Display weather data along with the day of the week (first 3 letters) above the temperature
+            const weatherDisplay = document.getElementById("weatherDisplay");
+            weatherDays.forEach(day => {
+                const date = new Date(day.datetime);
+                const dayOfWeek = date.toLocaleDateString('en-US', { weekday: 'long' }).slice(0, 3); // Get first 3 letters
+                const temperature = day.temp;
+
+                // Create a new div element for each day's weather info
+                const div = document.createElement('div');
+                div.className = 'weather-info';
+
+                // Create span elements for day of the week and temperature
+                const daySpan = document.createElement('span');
+                daySpan.textContent = dayOfWeek;
+
+                const tempSpan = document.createElement('span');
+                tempSpan.textContent = `${temperature}°C`;
+
+                // Append the spans to the div
+                div.appendChild(daySpan);
+                div.appendChild(tempSpan);
+
+                // Append the div to the weatherDisplay element
+                weatherDisplay.appendChild(div);
+            });
+        })
+        .catch(err => {
+            console.error(err);
+        });
+
+</script>
+
+
+
+<!-- HTML element to display weather data -->
+<div id="weatherDisplay" class="weather-container"></div>
+
+
+<style>
+    .weather-container {
+        display: flex;
+        flex-direction: row; /* Display items horizontally */
+        justify-content: space-around; /* Optional: Adjust the alignment of items */
+    }
+
+
+
+    .weather-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-right: 20px;
+    }
+</style>
+
+
+
+
+
+<!-- Display validation errors -->
+<div class="validation-summary-errors">
+    <ul>
+        @foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+        {
+            <li>@error.ErrorMessage</li>
+        }
+    </ul>
+</div>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Input.ProductID"></label>
+        <input asp-for="Input.ProductID" class="form-control" />
+        <span asp-validation-for="Input.ProductID" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Input.ProductName"></label>
+        <input asp-for="Input.ProductName" class="form-control" />
+        <span asp-validation-for="Input.ProductName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Input.Date"></label>
+        <input asp-for="Input.Date" class="form-control" />
+        <span asp-validation-for="Input.Date" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<br>
+<br>
+
+@if (TempData["PredictionResult"] != null)
+{
+    // Deserialize the PredictionResult from JSON
+    //var predictionResult = JsonConvert.DeserializeObject<PredictionResult>(TempData["PredictionResult"].ToString());
+
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <ejs-grid id="Grid" dataSource="@Model.predictions" allowPaging="true"  allowSelection="true" >
+                    <e-grid-pagesettings pagesize="8"></e-grid-pagesettings>
+                    <e-grid-selectionsettings checkboxMode="ResetOnRowClick" type="Multiple"></e-grid-selectionsettings>
+                    @*<e-grid-pagesettings pageCount="2"></e-grid-pagesettings>*@
+                    <e-grid-editSettings allowAdding="true" allowDeleting="true" allowEditing="true"></e-grid-editSettings>
+                    <e-grid-columns>
+                        <e-grid-column type="checkbox" width="50"></e-grid-column>
+                        <e-grid-column field="ProductID" headerText="ProductID" isPrimaryKey="true" width="120"></e-grid-column>
+                        <e-grid-column field="ProductName" headerText="Product" width="150"></e-grid-column>
+                        <e-grid-column field="Score" headerText="Score" width="150"></e-grid-column>
+                    </e-grid-columns>
+                </ejs-grid>
+            </div>
+        </div>
+    </div>
+
+    <br>
+}
+
