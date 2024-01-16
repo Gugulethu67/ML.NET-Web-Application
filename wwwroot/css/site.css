@@ -1,0 +1,441 @@
+
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+    font-family: "Inter";
+}
+
+*:not(.fa-solid):not(.fa):not(.e-icons) {
+    font-family: "Inter"
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: #12161d;
+    color: #fff;
+    overflow: auto;
+    overflow-x: auto;
+}
+
+.e-bigger {
+    font-size: x-large;
+}
+
+.main-content {
+    margin-left: 290px;
+    overflow-y: auto;
+    height: 92vh;
+    color: #fff;
+}
+
+
+/*Button*/
+.btn:focus, .btn:active {
+    outline: none !important;
+    box-shadow: none;
+}
+
+/*Hyperlink*/
+.no-a-decoration, .no-a-decoration:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+
+.dashboard-card {
+    float: left;
+    border: 1px solid #ddd; /* Border style and color */
+    padding: 15px; /* Padding around the card */
+    margin: 8px; /* Margin between cards (adjust as needed) */
+    width: 500px;
+    display: inline-block; /* Arrange cards horizontally */
+    vertical-align: top; /* Align cards to the top of the row */
+    margin-right: 20px; /* Add some spacing between the cards */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /*background-color: #fff;*/
+}
+
+    .dashboard-card h3 {
+        font-size: 18px;
+    }
+
+.card {
+    float: left;
+    border: 1px solid #ddd; /* Border style and color */
+    padding: 15px; /* Padding around the card */
+    margin: 8px; /* Margin between cards (adjust as needed) */
+    width: 500px;
+    display: inline-block; /* Arrange cards horizontally */
+    vertical-align: top; /* Align cards to the top of the row */
+    margin-right: 20px; /* Add some spacing between the cards */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /*background-color: #fff;*/
+}
+
+    .card h3 {
+        font-size: 18px;
+    }
+/* Style for the product cards */
+.product-card {
+    /*background-color: #ffffff;*/ /* Card background color */
+    border: 1px solid #ccc; /* Card border */
+    padding: 10px; /* Padding inside the card */
+    margin: 10px 0; /* Margin between cards */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Box shadow for a subtle 3D effect */
+    border-radius: 5px; /* Rounded corners for the card */
+}
+
+    /* Style for product names */
+    .product-card h3 {
+        font-size: 18px; /* Font size for product names */
+        margin-bottom: 5px; /* Spacing between product name and other details */
+    }
+
+    /* Style for predicted and remaining values */
+    .product-card p {
+        font-size: 16px; /* Font size for details */
+        margin: 5px 0; /* Spacing between detail lines */
+    }
+
+    /* Add hover effect for cards (optional) */
+    .product-card:hover {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Increase box shadow on hover */
+        transform: scale(1.02); /* Slightly scale up the card on hover */
+    }
+
+.weekly-card {
+    float: left;
+    border: 1px solid #ddd; /* Border style and color */
+    padding: 15px; /* Padding around the card */
+    margin: 8px; /* Margin between cards (adjust as needed) */
+    width: 500px;
+    display: inline-block; /* Arrange cards horizontally */
+    vertical-align: top; /* Align cards to the top of the row */
+    margin-right: 20px; /* Add some spacing between the cards */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /*background-color: #fff;*/
+}
+
+.monthly-card {
+    float: left;
+    border: 1px solid #ddd; /* Border style and color */
+    padding: 15px; /* Padding around the card */
+    margin: 8px; /* Margin between cards (adjust as needed) */
+    width: 1000px;
+    height: 300px;
+    display: inline-block; /* Arrange cards horizontally */
+    vertical-align: top; /* Align cards to the top of the row */
+    margin-right: 20px; /* Add some spacing between the cards */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /*background-color: #fff;*/
+}
+
+    .monthly-card h3 {
+        font-size: 20px;
+    }
+
+#Monthly {
+    max-height: 230px; /* Adjust the maximum height as needed */
+    width: 100%; /* Ensure the chart container takes up the full width */
+}
+/*Logo*/
+.logo-wrapper {
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.app-logo {
+    padding: 10px 10px;
+}
+
+/*Menu*/
+#menu {
+    width: 100% !important;
+    background-color: inherit;
+    overflow: hidden;
+}
+
+    #menu .e-menu-item:not(.e-separator) {
+        height: 50px;
+        border-radius: 4px;
+    }
+
+    #menu .e-menu-item {
+        box-sizing: border-box;
+    }
+
+        #menu .e-menu-item a {
+            width: 100%;
+            color: rgb(171, 163, 152);
+            font-weight: 300;
+            padding: 7px 5px;
+            box-sizing: border-box;
+        }
+
+    #menu .e-anchor-wrap {
+        display: inline-block;
+    }
+
+    #menu .e-menu-item .e-anchor-wrap span.e-menu-icon {
+        color: rgb(171, 163, 152);
+    }
+
+    #menu .e-menu-item.e-separator {
+        border: none;
+        margin: 5px 5px;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 13px;
+        color: #65da41;
+    }
+
+        #menu .e-menu-item.e-separator:not(:first-child) {
+            margin-top: 35px;
+        }
+
+
+/*Profile Pic*/
+img.profile-pic {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+.profile-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: rgba(72, 84, 95, 0.12);
+    padding: 16px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+
+    .profile-wrapper .titles {
+        line-height: 1;
+    }
+
+/*Navbar*/
+nav.navbar {
+    background-color: rgba(18, 22, 29);
+}
+
+    nav.navbar i {
+        padding: 10px;
+        border-radius: 50%;
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
+
+        nav.navbar i:hover, nav.navbar img:hover {
+            cursor: pointer;
+            background-color: #48545f14;
+            transform: scale(1.05) translateZ(0px);
+        }
+
+nav.navbar {
+    margin-left: 290px;
+}
+
+/*SideBar*/
+#sidebar {
+    background-color: #12161d;
+    border-right: 1px dashed rgba(75,82,85,0.24);
+    padding: 10px 20px;
+    overflow: hidden;
+}
+
+    #sidebar .e-menu-wrapper {
+        width: 100%;
+        background-color: inherit;
+    }
+
+#sidebar-toggler {
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+    #sidebar-toggler:hover {
+        cursor: pointer;
+        background-color: #48545f14;
+        transform: scale(1.05) translateZ(0px);
+    }
+
+#sidebar.e-close {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+    #sidebar.e-close .app-logo {
+        display: none;
+    }
+
+    #sidebar.e-close .e-anchor-wrap, #sidebar.e-close .e-menu-item.e-menu-caret-icon {
+        font-size: 0px;
+    }
+
+    #sidebar.e-close .profile-wrapper .titles {
+        display: none !important;
+    }
+
+
+    #sidebar.e-open .e-anchor-wrap,
+    #sidebar.e-close .e-menu-icon, #sidebar.e-open .e-menu-icon {
+        visibility: visible;
+    }
+
+#sidebar.e-open .profile-wrapper .titles, #sidebar.e-open .app-logo {
+    display: flex;
+}
+
+#sidebar.e-sidebar.e-right.e-close {
+    visibility: visible;
+    transform: translateX(0%);
+}
+
+#sidebar.e-open #sidebar-toggler:before {
+    content: '\f100'
+}
+
+#sidebar.e-close #sidebar-toggler:before {
+    content: '\f101'
+}
+
+
+/*BreadCrumb*/
+/*.e-breadcrumb a, .e-breadcrumb a:hover {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+*/
+/*Grid*/
+
+.e-toolbar .e-tbar-btn-text, .e-toolbar .e-toolbar-items .e-toolbar-item .e-tbar-btn-text {
+    display: none;
+}
+
+.e-grid .e-gridheader {
+    border: 2px solid green;
+    font-size: 10px;
+}
+
+.e-grid .e-headercell {
+    color: darkblue;
+}
+
+.e-grid {
+    font-family: cursive;
+}
+
+    .e-grid .e-row:hover .e-rowcell {
+        background-color: rgb(204, 229, 255) !important;
+    }
+
+    .e-grid .e-rowcell.e-selectionbackground {
+        background-color: rgb(230, 230, 250);
+    }
+
+    .e-grid .e-row.e-altrow {
+        background-color: rgb(150, 212, 212);
+    }
+
+    .e-grid .e-row {
+        background-color: rgb(180, 180, 180);
+    }
+
+    .e-grid .e-pagercontainer {
+        background-color: rgb(150, 212, 212);
+    }
+
+    .e-grid .e-icon-ascending::before {
+        content: '\e306';
+    }
+
+    .e-grid .e-icon-ascending::before {
+        content: '\e304';
+    }
+
+    .e-grid .e-sortnumber {
+        background-color: #deecf9;
+        font-family: cursive;
+    }
+
+    .e-grid .e-filterbarcell .e-input-group input.e-input {
+        font-family: cursive;
+    }
+
+    .e-grid .e-filterbarcell .e-input-group .e-clear-icon::before {
+        content: '\e825';
+    }
+
+    .e-grid .e-toolbar-items {
+        background-color: #deecf9;
+    }
+
+
+/* Style the breadcrumb for visibility */
+.e-breadcrumb {
+    background-color: #ddd; /* Background color for the breadcrumb */
+    /*color: #fff;*/ /* Text color for the breadcrumb */
+    padding: 5px 10px; /* Adjust padding to reduce space */
+    padding: 10px; /* Add padding to the breadcrumb */
+    border-radius: 5px; /* Add rounded corners to the breadcrumb */
+    font-size: 14px; /* Adjust font size */
+    width: 1180px;
+}
+
+    .e-breadcrumb a {
+        color: #fff; /* Text color for breadcrumb links */
+        /*text-decoration: none;*/ /* Remove underlines from breadcrumb links */
+    }
+
+        .e-breadcrumb a:hover {
+            text-decoration: underline; /* Add underline on hover for breadcrumb links */
+        }
+
+.w3ls_banner_info h3 {
+    font-size: 3em;
+    color: #fff;
+    line-height: 1.5em;
+    letter-spacing: 2px;
+}
+
+.w3ls_banner_info p {
+    color: #fff;
+    line-height: 1.8em;
+    font-size: 1.1em;
+}
+
+/* Add this CSS to your existing stylesheet or a <style> block */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-100%); /* Start off-screen to the left */
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0); /* Move to the original position */
+    }
+}
+
+.w3ls_banner_info h3 {
+    animation: slideIn 2.5s ease-in-out; /* Adjust the duration and timing as needed */
+}
+
